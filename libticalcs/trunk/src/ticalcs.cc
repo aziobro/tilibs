@@ -451,7 +451,7 @@ TIEXPORT3 CalcHandle* TICALL ticalcs_handle_new(CalcModel model)
 
 	for (i = 0; i < sizeof(calcs) / sizeof(calcs[0]) - 1; i++) // - 1 for the terminating NULL.
 	{
-		if (calcs[i]->model == (int const)model)
+		if (calcs[i]->model == (int)model)
 		{
 			calc = (CalcFncts *)calcs[i];
 			break;
