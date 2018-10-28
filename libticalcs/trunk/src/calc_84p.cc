@@ -1703,7 +1703,7 @@ static int		change_attr	(CalcHandle* handle, VarRequest* vr, FileAttr attr)
 static int		get_version	(CalcHandle* handle, CalcInfos* infos)
 {
 	static const uint16_t pids[] = {
-		DUSB_PID_OS_MODE, DUSB_PID_DEVICE_TYPE, DUSB_PID_PRODUCT_NAME, DUSB_PID_MAIN_PART_ID,
+		DUSB_PID_OS_MODE, DUSB_PID_DEVICE_TYPE, DUSB_PID_PRODUCT_NUMBER, DUSB_PID_PRODUCT_NAME, DUSB_PID_MAIN_PART_ID,
 		DUSB_PID_HW_VERSION, DUSB_PID_LANGUAGE_ID, DUSB_PID_SUBLANG_ID,
 		DUSB_PID_BOOT_BUILD_NUMBER, DUSB_PID_BOOT_VERSION, DUSB_PID_OS_BUILD_NUMBER, DUSB_PID_OS_VERSION,
 		DUSB_PID_PHYS_RAM, DUSB_PID_USER_RAM, DUSB_PID_FREE_RAM,
@@ -1749,6 +1749,13 @@ static int		get_version	(CalcHandle* handle, CalcInfos* infos)
 			}
 			i++;
 
+			if (params[i]->ok && params[i]->size == 4)
+			{
+				product_id = params[i]->data[3];
+				infos_mask |= INFOS_PRODUCT_ID;
+			}
+			i++;
+
 			if (params[i]->ok)
 			{
 				ticalcs_strlcpy(infos->product_name, (char *)params[i]->data, sizeof(infos->product_name));
@@ -1758,7 +1765,12 @@ static int		get_version	(CalcHandle* handle, CalcInfos* infos)
 
 			if (params[i]->ok && params[i]->size == 5)
 			{
-				product_id = params[i]->data[0];
+				if ((infos_mask & INFOS_PRODUCT_ID) && product_id != params[i]->data[0])
+				{
+					ticalcs_warning(_("That's odd, product ID and calc ID do not match ?"));
+					// Nevertheless, we'll trust the product ID information (which tends to be hard-coded)
+					// instead of the calc ID information (which is normally extracted from the cert memory).
+				}
 				ticalcs_slprintf(infos->main_calc_id, sizeof(infos->main_calc_id), "%02X%02X%02X%02X%02X",
 				                 product_id, params[i]->data[1], params[i]->data[2], params[i]->data[3], params[i]->data[4]);
 				infos_mask |= INFOS_MAIN_CALC_ID;

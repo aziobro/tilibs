@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libticalcs2 1.1.10\n"
 "Report-Msgid-Bugs-To: tilp-users@lists.sourceforge.net\n"
-"POT-Creation-Date: 2018-10-21 21:38+0200\n"
+"POT-Creation-Date: 2018-10-28 20:02+0100\n"
 "PO-Revision-Date: 2016-11-18 19:30+0300\n"
 "Last-Translator: Andreas B. Mundt <andi@debian.org>\n"
 "Language-Team: German <debian-l10n-german@lists.debian.org>\n"
@@ -142,33 +142,37 @@ msgstr ""
 msgid "Getting version..."
 msgstr "Hole Versionsnummer..."
 
-#: src/calc_84p.cc:1969 src/calc_84p.cc:1978 src/calc_84p.cc:1987
-#: src/calc_84p.cc:2003 src/calc_84p.cc:2011
+#: src/calc_84p.cc:1770
+msgid "That's odd, product ID and calc ID do not match ?"
+msgstr ""
+
+#: src/calc_84p.cc:1981 src/calc_84p.cc:1990 src/calc_84p.cc:1999
+#: src/calc_84p.cc:2015 src/calc_84p.cc:2023
 #, c-format
 msgid "Unhandled 84+ family member with product_id=%d hw_version=%d"
 msgstr "Unbekanntes 84+ Familienmitglied mit product_id=%d hw_version=%d"
 
-#: src/calc_84p.cc:2029
+#: src/calc_84p.cc:2041
 msgid "TI-84 Plus thru DirectLink"
 msgstr "TI-84 Plus mittels DirectLink"
 
-#: src/calc_84p.cc:2100
+#: src/calc_84p.cc:2112
 msgid "TI-84 Plus C Silver Edition thru DirectLink"
 msgstr "TI-84 Plus C Silver Edition mittels DirectLink"
 
-#: src/calc_84p.cc:2171
+#: src/calc_84p.cc:2183
 msgid "TI-83 Premium CE thru DirectLink"
 msgstr "TI-83 Premium CE mittels DirectLink"
 
-#: src/calc_84p.cc:2242
+#: src/calc_84p.cc:2254
 msgid "TI-84 Plus CE thru DirectLink"
 msgstr "TI-84 Plus CE mittels DirectLink"
 
-#: src/calc_84p.cc:2313
+#: src/calc_84p.cc:2325
 msgid "TI-82 Advanced thru DirectLink"
 msgstr "TI-82 Advanced mittels DirectLink"
 
-#: src/calc_84p.cc:2384
+#: src/calc_84p.cc:2396
 msgid "TI-84 Plus T thru DirectLink"
 msgstr "TI-84 Plus T mittels DirectLink"
 
